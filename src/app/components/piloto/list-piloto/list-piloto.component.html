@@ -1,0 +1,19 @@
+
+<section>
+    @for (item of listPilotos; track $index) {
+        <ul>
+            <li>
+                Nombre: {{item.nombre}}
+                Primera Escuderia: {{item.escuderia}}
+                Escuderia Actual: {{item.escuderiaActual}}
+                Año debut: {{item.anioDebut}}
+                Premios: {{item.cantPremios}}
+                Podios Logrados: {{item.cantPodios}}
+                Esta activo?: @if(item.isActive){ SI! } @else { NO! }
+            </li>
+        </ul>
+    }
+
+</section>
+
+<app-add-piloto (pilotoEmitter)="agregarPiloto($event)"> </app-add-piloto>

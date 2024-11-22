@@ -1,0 +1,38 @@
+
+<section>
+    <fieldset>
+        <legend>Formulario</legend>
+    </fieldset>
+
+    <form action="" [formGroup]="formulario" (ngSubmit)="addPiloto($event)">
+        <label for="nombre"> Nombre </label>
+        <input type="text">
+       <!-- AGREGAR CONDICIONES DE VALIDATORES DEL FORMULARIO
+ -->
+        <label for="escuderia"> Escuderia </label>
+        <input type="select">
+        <select name="escuderia" id="">
+            <option value="1">REDBULL</option>
+            <option value="2">FERRARI</option>
+            <option value="3">EL DE COLAPINTO</option>
+        </select>
+
+        <label for="escuderiaActual"> Escuderia Actual </label>
+        <input type="text">
+
+        <label for="anioDebut"> Año debut </label>
+        <input type="number">
+
+        <label for="cantPremios"> Cantidad de Premios </label>
+        <input type="number">
+
+        <label for="cantPodios"> Cantidad de Podios </label>
+        <input type="text">
+
+        <label for="isActive"> Activo? </label>
+        <input type="text">
+
+        <button type="submit"> AGREGAR </button>
+    </form>
+
+</section>
