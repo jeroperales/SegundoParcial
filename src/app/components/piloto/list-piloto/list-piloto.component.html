@@ -1,19 +1,29 @@
+<body>
+    <div>
 
-<section>
-    @for (item of listPilotos; track $index) {
-        <ul>
-            <li>
-                Nombre: {{item.nombre}}
-                Primera Escuderia: {{item.escuderia}}
-                Escuderia Actual: {{item.escuderiaActual}}
-                Año debut: {{item.anioDebut}}
-                Premios: {{item.cantPremios}}
-                Podios Logrados: {{item.cantPodios}}
-                Esta activo?: @if(item.isActive){ SI! } @else { NO! }
-            </li>
-        </ul>
-    }
+        <section>
+            @for (item of listPilotos; track $index) {
+                <ul>
+                    <li>
+                        id: {{item.id}} <br />
+                        Nombre: {{item.nombre}} <br />
+                        Primera Escuderia: {{item.escuderia}} <br />
+                        Escuderia Actual: {{item.escuderiaActual}} <br />
+                        Año debut: {{item.anioDebut}} <br />
+                        Premios: {{item.cantPremios}} <br />
+                        Podios Logrados: {{item.cantPodios}} <br />
+                        Esta activo?: @if(item.isActive){ Si } @else { No } <br />
 
-</section>
+                        <button (click)="borrarPiloto(item.id)" class="btn-delete">Delete</button>
+                    </li>
+                </ul>
+            }
+        
+        </section>
+    
+    </div>
+</body>
+
+
 
 <app-add-piloto (pilotoEmitter)="agregarPiloto($event)"> </app-add-piloto>
