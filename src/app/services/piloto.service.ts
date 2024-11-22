@@ -11,12 +11,11 @@ export class PilotoService {
   //FUNCIONES HTTP
   http = inject(HttpClient);
 
-  urlBase = 'http://local:host/3000'
+  urlBase = 'http://localhost:3000/pilotos'
 
   //get
   getPilotos():Observable<Piloto[]>{
     return this.http.get<Piloto[]>(this.urlBase)
-
   }
 
 
@@ -31,8 +30,8 @@ export class PilotoService {
   }
 
   //delete by nombre
-  deletePiloto(nombre: string): Observable<void> {
-    return this.http.delete<void>(`${this.urlBase}/${nombre}`)
+  deletePiloto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.urlBase}/${id}`)
   }
 
 }

@@ -11,7 +11,6 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   imports: [ReactiveFormsModule,
   FormsModule,
   CommonModule,
-  RouterOutlet,
   RouterModule],
   templateUrl: './add-piloto.component.html',
   styleUrl: './add-piloto.component.css'
@@ -26,6 +25,7 @@ export class AddPilotoComponent {
   pilotosList: Piloto[] = [];
 
   formulario = this.fb.nonNullable.group({
+    id: [0, Validators.required],
     nombre: ["", Validators.required],
     escuderia: ["", Validators.required],
     escuderiaActual: ["", Validators.required],
@@ -35,8 +35,12 @@ export class AddPilotoComponent {
     isActive: [false, Validators.required]
   })
 
-  addPiloto(event: any) { //FUNCION QUE AGREGA PILOTO Y LLAMA A FUNCION QUE TIENE HTTP
+  addPiloto() { //FUNCION QUE AGREGA PILOTO Y LLAMA A FUNCION QUE TIENE HTTP
+    if (this.formulario.invalid) return;
+  
     const piloto = this.formulario.getRawValue();
+
+    console.log(piloto)
 
     this.addPilotoJSON(piloto);
 
@@ -48,31 +52,16 @@ export class AddPilotoComponent {
   {
     this.pilotoService.postPiloto(piloto).subscribe({
       next: (piloto: Piloto)=> {
-        alert('Se ha agregado un piloto correctamente');
-         this.pilotosList.push(piloto);  //AGREGAR PILOTO A ARREGLO TEMPORAL PARA QUE SE MUESTRE
+        console.log('cargado correctamente')
       },
       error: (e: Error) =>{
         console.log(e.message)
+        console.log('NO')
       }
     })
   }
 
-  //FUNCION BORRAR
-borrarPiloto(event: any){
-  const nombre = this.formulario.getRawValue();
 
-}
-
-borrarPilotoJSON(nombre: string){
-
-  this.pilotoService.deletePiloto(nombre).subscribe({
-    next: ()=> {
-      console.log ('Ha sido eliminado correctamente')
-    },
-    error: (e: Error) =>{
-      console.log(e.message)
-    }
-  })}
 
 }
 

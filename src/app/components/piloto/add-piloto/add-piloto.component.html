@@ -1,38 +1,54 @@
 
 <section>
     <fieldset>
-        <legend>Formulario</legend>
-    </fieldset>
+        <legend>AGREGAR PILOTO</legend>
+ 
 
-    <form action="" [formGroup]="formulario" (ngSubmit)="addPiloto($event)">
+    <form [formGroup]="formulario" (ngSubmit)="addPiloto()">
         <label for="nombre"> Nombre </label>
-        <input type="text">
-       <!-- AGREGAR CONDICIONES DE VALIDATORES DEL FORMULARIO
- -->
+        <input type="text"
+        formControlName="nombre">
+
+        <label for="id"> ID: </label>
+        <input type="number"
+        formControlName="id">
+
+       <!-- AGREGAR CONDICIONES DE VALIDATORES DEL FORMULARIO-->
         <label for="escuderia"> Escuderia </label>
-        <input type="select">
-        <select name="escuderia" id="">
-            <option value="1">REDBULL</option>
-            <option value="2">FERRARI</option>
-            <option value="3">EL DE COLAPINTO</option>
+        <select formControlName="escuderia" id="">
+            <option value="redbull">REDBULL</option>
+            <option value="ferrari">FERRARI</option>
+            <option value="williams">EL DE COLAPINTO</option>
         </select>
 
         <label for="escuderiaActual"> Escuderia Actual </label>
-        <input type="text">
+        <select formControlName="escuderiaActual" id="">
+            <option value="redbull">REDBULL</option>
+            <option value="ferrari">FERRARI</option>
+            <option value="williams">EL DE COLAPINTO</option>
+        </select>
+        
 
         <label for="anioDebut"> Año debut </label>
-        <input type="number">
+        <input type="number"
+        formControlName="anioDebut">
 
         <label for="cantPremios"> Cantidad de Premios </label>
-        <input type="number">
+        <input type="number"
+        formControlName="cantPremios">
 
         <label for="cantPodios"> Cantidad de Podios </label>
-        <input type="text">
+        <input type="number"
+        formControlName="cantPodios">
 
-        <label for="isActive"> Activo? </label>
-        <input type="text">
+        <label>Esta Activos?</label> 
+        <select formControlName="isActive" id="">
+            <option value= true>Si</option>
+            <option value= false>No</option>
+        </select>
 
         <button type="submit"> AGREGAR </button>
     </form>
 
+</fieldset>
 </section>
